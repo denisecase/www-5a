@@ -34,12 +34,18 @@ Unlike arrays, some special big data structures such as a Spark RDD (resilient d
 
 ## Simplified Web for Easier Parsing
 
-This initial small web is created out of several somewhat easy to parse pages. In this starter version, all outgoing links are the only thing on their own line and follow GitHub Markdown syntax. Look for square brackets with the display text, immediately followed by parenthesis with the URL of the outgoing link. 
+This initial small web is created out of several somewhat easy to parse pages. 
+
+- In this starter version, all outgoing links are the only thing on their own line and follow GitHub Markdown syntax. 
+- Look for square brackets with the display text, immediately followed by parenthesis with the URL of the outgoing link. 
+- Pages with no outgoing links add a special challenge. In this starter version, all pages will have at least one outgoing link to simplify the process. 
 
 The simplified parsing helps us focus on generating the map reduce processing jobs needed to implement pagerank:
 
-Job 1 - Crawl web, get outgoing links 
-Job 2 - Assign values to each page (average value of 1 per page) and interate until we get the correct page values based on importance. 
+Job 1 - Crawl web, map each page, outgoing link. Reduce by page key to create a list of outgoing links from each page. Add initial PR=1 (page rank) to each page. Output of Job 1 is input to Job 2.
+
+Job 2 - Reverse and Iterate to get PR. Map each item in the list to its incoming page and keep track of how many outgoing links (votes) that incoming page made. Calculate new PR values for each key page and interate until we get the correct page values based on importance. Output of Job 2 is input to Job 3.
+
 JOb 3 - Rank pages based on value, highest value first. 
 
 ## Process Flow
