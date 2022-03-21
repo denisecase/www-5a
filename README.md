@@ -14,3 +14,5 @@ This little world wide web has the following pages:
 [Python](python.md)
 
 Plus this README.md.
+
+Challenge: Rank these pages, so when a user searches for big data, the best (highest-ranking, most-referenced) pages will be suggested.
