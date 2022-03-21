@@ -13,7 +13,7 @@ Some pages link to other pages (the page has an 'out-going' link). In PageRank (
 
 First, we crawl the web, check each page and record each outgoing link. 
 
-There are 5 pages:
+There are 5 pages + a README.md:
 
 1. beam
 2. data
@@ -23,10 +23,15 @@ There are 5 pages:
 
 The only outgoing links we will find (the first time around) are:
 
-1. golang.md -> beam.md
-2. java.md -> beam.md
-3. python.md -> beam.md
-4. beam.md -> data.md
+1. beam.md -> data.md
+2. golang.md -> beam.md
+3. java.md -> beam.md
+4. python.md -> beam.md
+5. README.md -> beam.md
+6. README.md -> data.md
+7. README.md -> golang.md
+8. README.md -> java.md
+9. README.md -> python.md
 
 Read the file and keep only the link information. In Big Data, we use transformations (e.g. map) on our raw data. We read and process each line just once across many machines concurrently - never read files into arrays or any other data structure that is not set up to be handed out to many machines - we must be scalable across billions, trillions of pages and lines. 
 
